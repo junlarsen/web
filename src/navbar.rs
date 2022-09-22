@@ -1,4 +1,3 @@
-use crate::navbar_link::NavbarLink;
 use yew::prelude::*;
 
 #[derive(Properties, PartialEq)]
@@ -7,26 +6,33 @@ pub struct NavbarProps {
     pub children: Children,
 }
 
-pub struct Navbar;
-
-impl Component for Navbar {
-    type Message = ();
-    type Properties = NavbarProps;
-
-    fn create(ctx: &Context<Self>) -> Self {
-        Self {}
-    }
-
-    fn view(&self, ctx: &Context<Self>) -> Html {
-        return html! {
-            <nav class="flex w-full flex-col md:flex-row md:justify-between p-2">
-                <div class="flex w-full justify-between">
-                    <NavbarLink href="#">{"٩(◕‿◕｡)۶"}</NavbarLink>
-                    <div class="hidden md:flex flex-col md:flex-row gap-x-4">
-                        {for ctx.props().children.iter()}
-                    </div>
+#[function_component(Navbar)]
+pub fn navbar(props: &NavbarProps) -> Html {
+    return html! {
+        <nav class="flex w-full flex-col md:flex-row md:justify-between px-2">
+            <div class="flex w-full justify-between">
+                <NavbarLink href="#">{"٩(◕‿◕｡)۶"}</NavbarLink>
+                <div class="hidden md:flex flex-col md:flex-row gap-x-4">
+                    {for props.children.iter()}
                 </div>
-            </nav>
-        };
-    }
+            </div>
+        </nav>
+    };
+}
+
+#[derive(Properties, PartialEq)]
+pub struct NavbarLinkProps {
+    #[prop_or_default]
+    pub children: Children,
+    #[prop_or("#")]
+    pub href: &'static str,
+}
+
+#[function_component(NavbarLink)]
+pub fn navbar_link(props: &NavbarLinkProps) -> Html {
+    return html! {
+        <a href={props.href} class="align-middle text-xl p-1 font-bold text-primary-12 decoration-4 transition ease-in-out decoration-primary hover:underline">
+            {for props.children.iter()}
+        </a>
+    };
 }

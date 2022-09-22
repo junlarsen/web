@@ -1,6 +1,5 @@
 mod home;
 mod navbar;
-mod navbar_link;
 mod paragraph;
 mod section;
 

@@ -6,21 +6,11 @@ pub struct ParagraphProps {
     pub children: Children,
 }
 
-pub struct Paragraph;
-
-impl Component for Paragraph {
-    type Message = ();
-    type Properties = ParagraphProps;
-
-    fn create(ctx: &Context<Self>) -> Self {
-        Self {}
-    }
-
-    fn view(&self, ctx: &Context<Self>) -> Html {
-        return html! {
-            <p class="font-noto text-gray-12 my-2">
-                {for ctx.props().children.iter()}
-            </p>
-        };
-    }
+#[function_component(Paragraph)]
+pub fn paragraph(props: &ParagraphProps) -> Html {
+    return html! {
+        <p class="font-noto text-gray-12 my-2">
+            {for props.children.iter()}
+        </p>
+    };
 }
