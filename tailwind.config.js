@@ -15,6 +15,7 @@ module.exports = {
       },
       colors: {
         primary: toScaleRecord(colors.cyan),
+        secondary: toScaleRecord(colors.teal),
         gray: toScaleRecord(colors.slate),
       },
     },

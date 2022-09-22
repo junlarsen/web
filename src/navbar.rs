@@ -9,9 +9,9 @@ pub struct NavbarProps {
 #[function_component(Navbar)]
 pub fn navbar(props: &NavbarProps) -> Html {
     return html! {
-        <nav class="flex w-full flex-col md:flex-row md:justify-between px-2">
+        <nav class="flex w-full flex-col md:flex-row md:justify-between px-3">
             <div class="flex w-full justify-between">
-                <NavbarLink href="#">{"٩(◕‿◕｡)۶"}</NavbarLink>
+                <NavbarLink href={"#top".to_owned()}>{"٩(◕‿◕｡)۶"}</NavbarLink>
                 <div class="hidden md:flex flex-col md:flex-row gap-x-4">
                     {for props.children.iter()}
                 </div>
@@ -24,14 +24,14 @@ pub fn navbar(props: &NavbarProps) -> Html {
 pub struct NavbarLinkProps {
     #[prop_or_default]
     pub children: Children,
-    #[prop_or("#")]
-    pub href: &'static str,
+    #[prop_or("#".to_owned())]
+    pub href: String,
 }
 
 #[function_component(NavbarLink)]
 pub fn navbar_link(props: &NavbarLinkProps) -> Html {
     return html! {
-        <a href={props.href} class="align-middle text-xl p-1 font-bold text-primary-12 decoration-4 transition ease-in-out decoration-primary hover:underline">
+        <a href={props.href.clone()} class="align-middle text-xl py-1 font-bold text-primary-12 decoration-4 transition ease-in-out decoration-secondary-10 hover:underline">
             {for props.children.iter()}
         </a>
     };
