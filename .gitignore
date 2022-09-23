@@ -1,1 +1,5 @@
 tailwind.css
+dist
+node_modules
+target
+.terraform
