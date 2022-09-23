@@ -2,7 +2,9 @@ use crate::icon::Icon;
 use crate::navbar::{Navbar, NavbarLink};
 use crate::repository_card::RepositoryCard;
 use crate::section::Section;
+use crate::timeline::{Timeline, TimelineEvent};
 use crate::typography::{Heading, Link, Paragraph};
+use js_sys::Date;
 use yew::prelude::*;
 
 #[function_component(Home)]
@@ -11,6 +13,7 @@ pub fn home() -> Html {
         <main class="min-h-screen bg-gray-2">
             <HomeIntroductionSection />
             <HomeProjectsSection />
+            <HomeExperienceSection />
             <HomeContactSection />
         </main>
     };
@@ -77,7 +80,7 @@ fn home_projects_section() -> Html {
                     <RepositoryCard
                         org="dotkom"
                         repo="monoweb"
-                        stack={vec!["typescript".to_owned(), "react".to_owned(), "nextjs".to_owned(), "aws".to_owned()]}
+                        stack={vec!["typescript".to_owned(), "react".to_owned(), "nextjs".to_owned(), "aws".to_owned(), "terraform".to_owned()]}
                         contribution="During my time as an Online and Dotkom member I've contributed to numerous parts of our system including our design system, our cloud infrastructure hosted on Amazon Web Services, and most recently; our new events system."
                         description="Monoweb is the new iteration of Online's (my study programme's student association) website. It's a large system with many components varying in complexity. Monoweb is implemented as full-stack TypeScript and is the successor to our legacy Python system."
                     />
@@ -89,10 +92,41 @@ fn home_projects_section() -> Html {
 
 #[function_component(HomeExperienceSection)]
 fn home_experience_section() -> Html {
+    let events: Vec<(String, TimelineEvent)> = vec![(
+        "Consigli AS".to_owned(),
+        TimelineEvent::new(
+            Date::new_with_year_month(2021, 11),
+            Date::new_0(),
+            "Frontend Developer (part-time, remote)".to_owned(),
+            vec![
+                "Developer on Consigli platform frontend team, building a web platform using TypeScript and React & Redux with a focus on code architecture and Atomic Design.".to_owned(),
+                "DevOps engineer on Microsoft Azure with GitHub Actions, enabling continuous deployment of web platform to staging and production environments using Bicep code with Azure Container Registry.".to_owned()
+            ],
+            vec!["typescript".to_owned(), "react".to_owned(), "azure".to_owned()],
+        ).active(),
+        ),(
+        "Nelfo".to_owned(),
+        TimelineEvent::new(
+            Date::new_with_year_month(2019, 7),
+            Date::new_with_year_month(2021, 7),
+            "Frontend Developer (part-time)".to_owned(),
+            vec![
+                "Lead planning, development, and design for static web content platform used to promote electrical engineering to norwegian high school students.".to_owned(),
+                "Was responsible for deployment to production environment to static file host over FTP with nightly builds deploying to Vercel.".to_owned()
+            ],
+            vec!["typescript".to_owned(), "react".to_owned(), "nextjs".to_owned()],
+        ),
+    )];
+
     return html! {
         <Section class="bg-gray-2" id="experience">
             <div class="p-3">
                 <Heading>{"💼Experience"}</Heading>
+                <Paragraph>{"Throughout the years I've been lucky enough to work for a few companies where I've grown a lot as a developer as well has having the opportunity to work in teams on larger scale software. This is a timeline highlighting my work at these companies and what roles I've taken."}</Paragraph>
+
+                <div class="my-4">
+                    <Timeline events={events} />
+                </div>
             </div>
         </Section>
     };
@@ -132,7 +166,7 @@ fn home_contact_section() -> Html {
 
                 <div class="text-center font-bold mt-6">
                     <Paragraph>
-                        {"Website built with "}
+                        {"Website built using "}
                         <Icon name="rust" alt="rust" />
                         {" & "}
                         <Icon name="wasm" alt="webassembly" />

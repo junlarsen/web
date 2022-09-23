@@ -24,9 +24,7 @@ pub fn repository_card(props: &RepositoryCardProps) -> Html {
             <div class="flex items-start gap-y-1 gap-x-2 flex-row mt-2">
                 <div class="flex flex-col gap-1 min-w-[24px] mt-2">
                     {for props.stack.iter().map(|name| html! {
-                        <div title={name.to_owned()}>
-                            <Icon name={name.to_owned()} alt={name.to_owned()} />
-                        </div>
+                        <Icon name={name.to_owned()} alt={name.to_owned()} />
                     })}
                 </div>
                 <div class="flex flex-col gap-3">

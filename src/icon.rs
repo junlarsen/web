@@ -10,6 +10,6 @@ pub struct IconProps {
 #[function_component(Icon)]
 pub fn icon(props: &IconProps) -> Html {
     return html! {
-        <img src={format!("/{}.svg", props.name)} alt={props.alt.to_owned()} width={24} />
+        <img title={props.alt.clone()} src={format!("/{}.svg", props.name)} alt={props.alt.clone()} width={24} />
     };
 }
