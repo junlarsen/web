@@ -9,7 +9,7 @@ pub struct NavbarProps {
 #[function_component(Navbar)]
 pub fn navbar(props: &NavbarProps) -> Html {
     return html! {
-        <nav class="flex w-full flex-col md:flex-row md:justify-between px-3">
+        <nav class="hidden md:flex w-full flex-col md:flex-row md:justify-between px-3">
             <div class="flex w-full justify-between">
                 <NavbarLink href={"#top".to_owned()}>{"٩(◕‿◕｡)۶"}</NavbarLink>
                 <div class="hidden md:flex flex-col md:flex-row gap-x-4">

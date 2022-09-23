@@ -48,7 +48,7 @@ pub struct LinkProps {
 pub fn link(props: &LinkProps) -> Html {
     return html! {
         <a
-            class="text-primary-9 hover:text-primary-10"
+            class="text-secondary-11 font-bold hover:underline"
             target="_blank"
             rel="noopener noreferrer"
             href={props.href.clone()}

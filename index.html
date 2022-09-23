@@ -3,30 +3,42 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="This is the Crusty Corner, my personal space on the internet!" />
+
     <meta name="application-name" content="matsjla.no" />
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#ffffff" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="white" />
 
-    <title>jun.codes</title>
+    <title>Crusty Corner | jun.codes</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
 
-    <link data-trunk rel="rust" />
-    <link data-trunk href="./tailwind.css" rel="css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap"
+      rel="preload"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap"
+    /></noscript>
+
+    <link rel="preload" href="/tailwind.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/tailwind.css" /></noscript>
+
+    <link data-trunk rel="copy-file" href="./tailwind.css" />
+
     <link data-trunk rel="copy-file" href="./public/apple-touch-icon.png" />
     <link data-trunk rel="copy-file" href="./public/site.webmanifest" />
     <link data-trunk rel="copy-file" href="./public/android-chrome-96x96.png" />
     <link data-trunk rel="copy-file" href="./public/browserconfig.xml" />
     <link data-trunk rel="copy-file" href="./public/favicon.ico" />
     <link data-trunk rel="copy-file" href="./public/icon.jpg" />
-    <link data-trunk rel="copy-file" href="./public/picture.jpg" />
+    <link data-trunk rel="copy-file" href="./public/picture.webp" />
+    <link data-trunk rel="copy-file" href="./public/robots.txt" />
 
     <link data-trunk rel="copy-file" href="./public/icons/c.svg" />
     <link data-trunk rel="copy-file" href="./public/icons/cplusplus.svg" />
@@ -61,5 +73,7 @@
       browser that supports WebAssembly <3
     </noscript>
   </head>
-  <body></body>
+  <body>
+    <link data-trunk rel="rust" />
+  </body>
 </html>

@@ -51,11 +51,11 @@ pub fn timeline(props: &TimelineProps) -> Html {
     return html! {
         <div class="flex flex-col gap-2">
             {for props.events.iter().map(|(title, event)| html! {
-                <div class="w-full flex flex-row border-l-4 border-secondary-10">
-                    <div class="w-1/6 pl-4 font-bold flex items-center">
+                <div class="w-full flex flex-row md:border-l-4 md:border-secondary-10">
+                    <div class="hidden md:flex md:w-1/6 pl-4 font-bold items-center">
                         <Paragraph>{title.clone()}</Paragraph>
                     </div>
-                    <div class="w-5/6">
+                    <div class="w-full md:w-5/6">
                         <TimelineItem event={event.clone()} />
                     </div>
                 </div>
@@ -73,7 +73,7 @@ pub struct TimelineItemProps {
 pub fn timeline_item(props: &TimelineItemProps) -> Html {
     return html! {
         <div class="border rounded border-gray-4 shadow p-2">
-            <div class="flex flex-row justify-between">
+            <div class="flex flex-col md:flex-row justify-between">
                 <span class="font-bold">{props.event.title.clone()}</span>
                 <span class="font-bold">{format_date_range(&props.event.start, &props.event.end, props.event.active)}</span>
             </div>

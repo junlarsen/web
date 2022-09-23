@@ -29,10 +29,10 @@ fn home_introduction_section() -> Html {
                 <NavbarLink href="#contact">{"Contact"}</NavbarLink>
             </Navbar>
 
-            <div class="w-full flex flex-row pt-4 md:py-8">
+            <div class="w-full flex flex-col md:flex-row pt-4 gap-2 md:py-8">
                 <div class="w-full md:w-1/3 px-3">
                     <div class="w-full h-full">
-                        <img alt="profile picture" class="rounded-full" src="/picture.jpg" />
+                        <img alt="profile picture" class="rounded-full" src="/picture.webp" width={300} height={300} />
                     </div>
                 </div>
 
@@ -55,7 +55,7 @@ fn home_projects_section() -> Html {
             <div class="p-3">
                 <Heading>{"🔨Open Source"}</Heading>
                 <Paragraph>{"I'm a firm believer in open-source software, and I consequently find myself spending a lot of time working on free, open-source projects on GitHub. Some of the projects I work on were created by me, most by others. Here are some of my highlights."}</Paragraph>
-                <div class="grid grid-cols-2 gap-2 mt-4">
+                <div class="grid md:grid-cols-2 gap-2 mt-4">
                     <RepositoryCard
                         org="compiler-explorer"
                         repo="compiler-explorer"
@@ -166,7 +166,7 @@ fn home_contact_section() -> Html {
 
                 <div class="text-center font-bold mt-6">
                     <Paragraph>
-                        {"Website built using "}
+                        {"Built using "}
                         <Icon name="rust" alt="rust" />
                         {" & "}
                         <Icon name="wasm" alt="webassembly" />

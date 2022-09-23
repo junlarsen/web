@@ -17,7 +17,7 @@ pub fn repository_card(props: &RepositoryCardProps) -> Html {
     return html! {
         <div class="border rounded border-gray-4 shadow p-2">
             <div class="flex items-center gap-y-1 gap-x-2 flex-row">
-                <img class="rounded-full" src={format!("https://github.com/{}.png?size=24", props.org)} alt={format!("{} organization icon", props.org)} />
+                <img class="rounded-full" src={format!("https://github.com/{}.png?size=48", props.org)} alt={format!("{} organization icon", props.org)} width={24} height={24} />
                 <span class="font-bold">{format!("{}/{}", props.org, props.repo)}</span>
             </div>
 
