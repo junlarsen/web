@@ -51,7 +51,7 @@ fn home_introduction_section() -> Html {
 #[function_component(HomeProjectsSection)]
 fn home_projects_section() -> Html {
     return html! {
-        <Section class="bg-gray-1" id="#projects">
+        <Section class="bg-gray-1" id="projects">
             <div class="p-3">
                 <Heading>{"🔨Open Source"}</Heading>
                 <Paragraph>{"I'm a firm believer in open-source software, and I consequently find myself spending a lot of time working on free, open-source projects on GitHub. Some of the projects I work on were created by me, most by others. Here are some of my highlights."}</Paragraph>
@@ -135,7 +135,7 @@ fn home_experience_section() -> Html {
 #[function_component(HomeContactSection)]
 fn home_contact_section() -> Html {
     return html! {
-        <Section class="bg-gray-1" id="experience">
+        <Section class="bg-gray-1" id="contact">
             <div class="p-3">
                 <Heading>{"✉️Contact"}</Heading>
                 <Paragraph>{"I'm always interesting in expanding my network and building connections. Have any questions, thoughts, or ideas? Or maybe an opportunity you think I'd be interested in? Please reach me through one of these links, I'm always up for a chat!"}</Paragraph>
