@@ -1,4 +1,5 @@
 mod home;
+mod icon;
 mod navbar;
 mod repository_card;
 mod section;

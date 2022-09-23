@@ -9,7 +9,7 @@ pub struct ParagraphProps {
 #[function_component(Paragraph)]
 pub fn paragraph(props: &ParagraphProps) -> Html {
     return html! {
-        <p class="font-noto text-gray-12 mt-2">
+        <p class="font-noto text-gray-12 mt-2 inline-flex flex-row gap-1">
             {for props.children.iter()}
         </p>
     };

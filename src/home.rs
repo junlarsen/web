@@ -1,7 +1,8 @@
+use crate::icon::Icon;
 use crate::navbar::{Navbar, NavbarLink};
 use crate::repository_card::RepositoryCard;
 use crate::section::Section;
-use crate::typography::{Heading, Paragraph};
+use crate::typography::{Heading, Link, Paragraph};
 use yew::prelude::*;
 
 #[function_component(Home)]
@@ -10,6 +11,7 @@ pub fn home() -> Html {
         <main class="min-h-screen bg-gray-2">
             <HomeIntroductionSection />
             <HomeProjectsSection />
+            <HomeContactSection />
         </main>
     };
 }
@@ -21,6 +23,7 @@ fn home_introduction_section() -> Html {
             <Navbar>
                 <NavbarLink href="#projects">{"Projects"}</NavbarLink>
                 <NavbarLink href="#experience">{"Experience"}</NavbarLink>
+                <NavbarLink href="#contact">{"Contact"}</NavbarLink>
             </Navbar>
 
             <div class="w-full flex flex-row pt-4 md:py-8">
@@ -34,7 +37,7 @@ fn home_introduction_section() -> Html {
                     <div>
                         <Heading primary={true}>{"👋Hi, I'm Mats!"}</Heading>
                         <Paragraph>{"I'm a developer and student based in Trondheim, Norway with a passion for building things that people love. I love to explore new things, work on free open-source software, and cook food."}</Paragraph>
-                        <Paragraph>{"I'm currently studying computer science at NTNU in Trondheim, Norway, working part-time as a frontend developer remotely. I'm also a core contributor to the Compiler Explorer project."}</Paragraph>
+                        <Paragraph>{"I'm currently studying computer science at NTNU in Trondheim, Norway, working part-time as a frontend developer remotely. I also contribute to a number of open-source projects on GitHub."}</Paragraph>
                     </div>
                 </div>
             </div>
@@ -89,7 +92,53 @@ fn home_experience_section() -> Html {
     return html! {
         <Section class="bg-gray-2" id="experience">
             <div class="p-3">
-                <Heading>{"💼Work Experience"}</Heading>
+                <Heading>{"💼Experience"}</Heading>
+            </div>
+        </Section>
+    };
+}
+
+#[function_component(HomeContactSection)]
+fn home_contact_section() -> Html {
+    return html! {
+        <Section class="bg-gray-1" id="experience">
+            <div class="p-3">
+                <Heading>{"✉️Contact"}</Heading>
+                <Paragraph>{"I'm always interesting in expanding my network and building connections. Have any questions, thoughts, or ideas? Or maybe an opportunity you think I'd be interested in? Please reach me through one of these links, I'm always up for a chat!"}</Paragraph>
+
+                <ul class="my-4">
+                    <li>
+                        <Paragraph>
+                            <Icon name="linkedin" alt="linkedin" />
+                            {"Connect with me on "}
+                            <Link href="https://linkedin.com/in/mats-jun-larsen" external={true}>{"LinkedIn"}</Link>
+                        </Paragraph>
+                    </li>
+                    <li>
+                        <Paragraph>
+                            <Icon name="github" alt="github" />
+                            {"Follow my activity on "}
+                            <Link href="https://github.com/matsjla" external={true}>{"GitHub"}</Link>
+                        </Paragraph>
+                    </li>
+                    <li>
+                        <Paragraph>
+                            <Icon name="gmail" alt="email" />
+                            {"Shoot me an "}
+                            <Link href="mailto:me@supergrecko.com" external={true}>{"email"}</Link>
+                        </Paragraph>
+                    </li>
+                </ul>
+
+                <div class="text-center font-bold mt-6">
+                    <Paragraph>
+                        {"Website built with "}
+                        <Icon name="rust" alt="rust" />
+                        {" & "}
+                        <Icon name="wasm" alt="webassembly" />
+                        {" with <3 — © 2022"}
+                    </Paragraph>
+                </div>
             </div>
         </Section>
     };

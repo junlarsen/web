@@ -1,3 +1,4 @@
+use crate::icon::Icon;
 use crate::typography::{Link, Paragraph};
 use yew::prelude::*;
 
@@ -24,7 +25,7 @@ pub fn repository_card(props: &RepositoryCardProps) -> Html {
                 <div class="flex flex-col gap-1 min-w-[24px] mt-2">
                     {for props.stack.iter().map(|name| html! {
                         <div title={name.to_owned()}>
-                            <img src={format!("/{}.svg", name)} alt={name.to_owned()} width={24} />
+                            <Icon name={name.to_owned()} alt={name.to_owned()} />
                         </div>
                     })}
                 </div>
