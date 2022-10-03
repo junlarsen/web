@@ -12,6 +12,6 @@
     "fmt": "prettier . --write",
     "dev": "tailwindcss -o tailwind.css --watch",
     "build": "tailwindcss -o tailwind.css && trunk build",
-    "deploy": "yarn run build && aws s3 cp dist s3://jun.codes/ --recursive"
+    "deploy": "yarn run build && aws s3 cp docs s3://jun.codes/ --recursive"
   }
 }
