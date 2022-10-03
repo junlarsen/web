@@ -1,5 +1,5 @@
 tailwind.css
-docs
+dist
 node_modules
 target
 .terraform
