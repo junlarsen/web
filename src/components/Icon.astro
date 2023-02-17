@@ -1,0 +1,9 @@
+---
+export interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<img title={name} src={new URL(`/icons/${name}.svg`, Astro.url)} alt={`${name} logo`} width={24} height={24} />

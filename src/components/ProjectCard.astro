@@ -1,0 +1,41 @@
+---
+import Icon, { IconKind } from './Icon.astro';
+import Text from './Text.astro';
+import Link from './Link.astro';
+
+export interface Props {
+  org: string;
+  repo: string;
+  description: string;
+  contribution: string;
+  icons: string[];
+}
+
+const { org, repo, description, contribution, icons } = Astro.props;
+---
+
+<div class="border rounded border-gray-4 shadow p-2">
+  <div class="flex items-center gap-y-1 gap-x-2 flex-row">
+    <img
+      class="rounded-full"
+      src={`https://github.com/${org}.png?size=48`}
+      alt={`${org} organization icon`}
+      width={24}
+      height={24}
+    />
+    <span class="font-bold">{`${org}/${repo}`}</span>
+  </div>
+
+  <div class="flex items-start gap-y-1 gap-x-2 flex-row mt-2">
+    <div class="flex flex-col gap-1 min-w-[24px] mt-2">
+      {icons.map((icon) => <Icon name={icon} />)}
+    </div>
+    <div class="flex flex-col gap-3">
+      <Text>{description}</Text>
+      <Text>{contribution}</Text>
+      <div>
+        <Link external={true} href={`https://github.com/${org}/${repo}`}>Visit repository</Link>
+      </div>
+    </div>
+  </div>
+</div>

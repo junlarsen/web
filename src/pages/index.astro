@@ -1,5 +1,14 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
+import Page from '../components/layouts/Page.astro';
+import NavbarLink from '../components/NavbarLink.astro';
+import Navbar from '../components/Navbar.astro';
+import Section from '../components/Section.astro';
+import Title from '../components/Title.astro';
+import Text from '../components/Text.astro';
+import Link from '../components/Link.astro';
+import Icon from '../components/Icon.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 ---
 
 <!DOCTYPE html>
@@ -8,38 +17,121 @@ import BaseHead from '../components/BaseHead.astro';
     <BaseHead title="Home" description="Home" />
   </head>
   <body>
-    <main>
-      <h1>🧑‍🚀 Hello, Astronaut!</h1>
-      <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template serves as a
-        lightweight, minimally-styled starting point for anyone looking to build a personal website, blog, or portfolio with
-        Astro.
-      </p>
-      <p>
-        This template comes with a few integrations already configured in your
-        <code>astro.config.mjs</code> file. You can customize your setup with
-        <a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind, React, or Vue to your
-        project.
-      </p>
-      <p>Here are a few ideas on how to get started with the template:</p>
-      <ul>
-        <li>Edit this page in <code>src/pages/index.astro</code></li>
-        <li>Edit the site header items in <code>src/components/Header.astro</code></li>
-        <li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-        <li>Check out the included blog posts in <code>src/pages/blog/</code></li>
-        <li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-      </ul>
-      <p>
-        Have fun! If you get stuck, remember to <a href="https://docs.astro.build/">read the docs</a> or <a
-          href="https://astro.build/chat">join us on Discord</a
-        > to ask questions.
-      </p>
-      <p>
-        Looking for a blog template with a bit more personality? Check out <a
-          href="https://github.com/Charca/astro-blog-template"
-          >astro-blog-template
-        </a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-      </p>
-    </main>
+    <Page>
+      <Section id="top" color="bg-gray-2">
+        <Navbar>
+          <NavbarLink href="#projects">Projects</NavbarLink>
+          <NavbarLink href="#experience">Experience</NavbarLink>
+          <NavbarLink href="#contact">Contact</NavbarLink>
+        </Navbar>
+
+        <div class="w-full flex flex-col md:flex-row pt-4 gap-2 md:py-8">
+          <div class="w-full md:w-1/3 px-3">
+            <div class="w-full h-full">
+              <img
+                alt="profile picture"
+                class="rounded-full"
+                src={new URL('/picture.webp', Astro.url)}
+                width={300}
+                height={300}
+              />
+            </div>
+          </div>
+
+          <div class="w-full md:w-2/3 px-3 flex flex-col justify-center">
+            <div>
+              <Title primary={true}>👋Hi, I'm Mats!</Title>
+              <Text>
+                I'm a developer and student based in Trondheim, Norway with a passion for building things that people
+                love. I love to explore new things, work on free open-source software, and cook food.
+              </Text>
+              <Text>
+                I'm currently enrolled in a bachelor's degree in informatics at NTNU in Trondheim, Norway. On the side
+                I'm remotely working part-time as a frontend developer and working on a number of open-source projects
+                on GitHub.
+              </Text>
+            </div>
+          </div>
+        </div>
+      </Section>
+      <Section id="projects" class="bg-gray-1">
+        <div class="p-3">
+          <Title>{'🔨Open Source'}</Title>
+          <Text>
+            {
+              "I'm a firm believer in open-source software, and I consequently find myself spending a lot of time working on free, open-source projects on GitHub. Some of the projects I work on were created by me, most by others. Here are some of my highlights."
+            }
+          </Text>
+          <div class="grid md:grid-cols-2 gap-2 mt-4">
+            <ProjectCard
+              org="compiler-explorer"
+              repo="compiler-explorer"
+              icons={['typescript', 'nodejs']}
+              contribution="I've worked across the entire Compiler Explorer stack, but most of my work has been on transitioning from JavaScript to TypeScript. I've also done extensive work on the code formatters and assembly documentation hints in the editor. I'm also responsible for some the Rust tooling on the site."
+              description="Compiler Explorer, or commonly known as godbolt.org, is an interactive website where you can use over 1500 compilers and inspect their assembly outputs in the browser."
+            />
+            <ProjectCard
+              org="matsjla"
+              repo="league-connect"
+              icons={['typescript', 'nodejs']}
+              contribution="I started development on league-connect in 2019. After many iterations and a number of releases following semantic versioning it has become the most popular Node.js library for interacting with the League Client."
+              description="League Connect is my first open-source Node.js library published to NPM that enables desktop applications and tools to access the League of Legends Client APIs. It works over a mix of HTTP/1.1, HTTP/2.0 and WebSockets."
+            />
+            <ProjectCard
+              org="llvm"
+              repo="llvm-project"
+              icons={['c', 'cplusplus', 'cmake']}
+              contribution="My work on LLVM has mostly been within LLVM's C interface, a way to access LLVM APIs from the C programming language. Here I've worked on mapping functions and adding tests related to the LLVM IR and LLVM OrcJITv2 runtime compiler."
+              description="LLVM is a monolithic compiler infrastructure project hosting a number of C and C++ compilers, optimizers, and standard library implementations. It's also the compiler backend for a significant amount of programming languages such as C, C++, Rust, and Swift"
+            />
+            <ProjectCard
+              org="dotkom"
+              repo="monoweb"
+              icons={['typescript', 'react', 'nextjs', 'aws', 'terraform']}
+              contribution="During my time as an Online and Dotkom member I've contributed to numerous parts of our system including our design system, our cloud infrastructure hosted on Amazon Web Services, and most recently; our new events system."
+              description="Monoweb is the new iteration of my study programme's student association's website. It's a large system with many components varying in complexity. Monoweb is implemented as full-stack TypeScript and is the successor to our legacy Python system."
+            />
+          </div>
+        </div>
+      </Section>
+      <Section class="bg-gray-1" id="contact">
+        <div class="p-3">
+          <Title>{'✉️Contact'}</Title>
+          <Text>
+            {
+              "I'm always interesting in expanding my network and building connections. Have any questions, thoughts, or ideas? Or maybe an opportunity you think I'd be interested in? Please reach me through one of these links, I'm always up for a chat!"
+            }
+          </Text>
+
+          <ul class="my-4">
+            <li>
+              <Text>
+                <Icon name="linkedin" />
+                {'Connect with me on '}
+                <Link href="https://linkedin.com/in/mats-jun-larsen" external={true}>{'LinkedIn'}</Link>
+              </Text>
+            </li>
+            <li>
+              <Text>
+                <Icon name="github" />
+                {'Follow my activity on '}
+                <Link href="https://github.com/matsjla" external={true}>{'GitHub'}</Link>
+              </Text>
+            </li>
+            <li>
+              <Text>
+                <Icon name="gmail" />
+                {'Shoot me an '}
+                <Link href="mailto:me@supergrecko.com" external={true}>{'email'}</Link>
+              </Text>
+            </li>
+          </ul>
+
+          <div class="text-center font-bold mt-6">
+            <Text>Built with Astro, hosted on Vercel, made with <3</Text>
+          </div>
+        </div>
+      </Section>
+    </Page>
   </body>
 </html>

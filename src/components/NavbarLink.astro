@@ -1,0 +1,19 @@
+---
+import clsx from 'clsx';
+export interface Props {
+  href: string;
+  underline?: boolean;
+}
+
+const { href, underline = true } = Astro.props;
+const classes = clsx(
+  'align-middle text-2xl py-1 font-bold text-primary-12 decoration-4 transition easy-in-out decoration-secondary-10',
+  {
+    'hover:underline': underline,
+  },
+);
+---
+
+<a href={href} class={classes}>
+  <slot />
+</a>
