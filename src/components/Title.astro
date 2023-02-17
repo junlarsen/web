@@ -1,0 +1,25 @@
+---
+import clsx from 'clsx';
+
+export interface Props {
+  primary?: boolean;
+}
+
+const { primary = false } = Astro.props;
+const classes = clsx(
+  'font-bold underline decoration-secondary-10 decoration-4 font-noto tracking-tighter text-primary-12',
+  primary ? 'text-4xl' : 'text-3xl',
+);
+---
+
+{
+  primary ? (
+    <h1 class={classes}>
+      <slot />
+    </h1>
+  ) : (
+    <h1 class={classes}>
+      <slot />
+    </h1>
+  )
+}
