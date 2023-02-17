@@ -9,16 +9,63 @@ import Text from '../components/Text.astro';
 import Link from '../components/Link.astro';
 import Icon from '../components/Icon.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import Timeline from '../components/Timeline.astro';
+
+const events = [
+  {
+    company: 'Capra Consulting AS',
+    logo: 'capra',
+    start: new Date(2023, 5),
+    end: new Date(2023, 7),
+    title: 'Software developer (internship)',
+    roles: [
+      "Software consultant on a product development team for Capra's summer internship",
+      '',
+      '',
+      'Details to come... (as this is in the future :))',
+    ],
+    icons: ['aws', 'typescript', 'react'],
+  },
+  {
+    company: 'Consigli AS',
+    logo: 'consigli',
+    start: new Date(2021, 10),
+    end: new Date(),
+    title: 'Front-end developer (part-time, remote)',
+    roles: [
+      "Software Developer on the Consigli platform frontend team, building a client-facing web platform delivering Consigli's services to our customers.",
+      'Frontend developer, working in modern React and TypeScript, orchestrating multiple applications in a multi-module monorepo.',
+      "DevOps engineer on Microsoft's Azure platform, performing continuous testing and deployment to three environments using GitHub Actions, delivering infrastructure as code.",
+    ],
+    icons: ['typescript', 'react', 'azure'],
+    active: true,
+  },
+  {
+    company: 'Nelfo (NHO)',
+    logo: 'nelfo',
+    start: new Date(2019, 6),
+    end: new Date(221, 6),
+    title: 'Front-end Developer (part-time)',
+    roles: [
+      'Lead developer on a in-house CMS-like application, delivering a content platform catered to Norwegian high school students interested in studying electrical engineering.',
+      'DevOps and infrastructure lead, performing continuous deploys to Vercel, and manual deployments to production.',
+    ],
+    icons: ['typescript', 'react', 'nextjs'],
+  },
+];
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead title="Home" description="Home" />
+    <BaseHead
+      title="Crusty Corner | jun.codes"
+      description="This is the Crusty Corner, my personal little piece of the internet <3"
+    />
   </head>
   <body>
     <Page>
-      <Section id="top" color="bg-gray-2">
+      <Section id="top" color="bg-gray-3">
         <Navbar>
           <NavbarLink href="#projects">Projects</NavbarLink>
           <NavbarLink href="#experience">Experience</NavbarLink>
@@ -42,87 +89,104 @@ import ProjectCard from '../components/ProjectCard.astro';
             <div>
               <Title primary={true}>👋Hi, I'm Mats!</Title>
               <Text>
-                I'm a developer and student based in Trondheim, Norway with a passion for building things that people
-                love. I love to explore new things, work on free open-source software, and cook food.
+                I'm a developer, student, and coffee addict based in Trondheim, Norway with a passion for building
+                things that people love. I love to explore new things, meet new people, work on open-source software,
+                and cook food!
               </Text>
               <Text>
-                I'm currently enrolled in a bachelor's degree in informatics at NTNU in Trondheim, Norway. On the side
-                I'm remotely working part-time as a frontend developer and working on a number of open-source projects
+                I'm currently enrolled in a bachelor's degree in informatics at NTNU in Trondheim, Norway. Additionally,
+                I work remotely part-time as a frontend developer, routinely working on a number of open-source projects
                 on GitHub.
               </Text>
             </div>
           </div>
         </div>
       </Section>
-      <Section id="projects" class="bg-gray-1">
-        <div class="p-3">
-          <Title>{'🔨Open Source'}</Title>
-          <Text>
-            {
-              "I'm a firm believer in open-source software, and I consequently find myself spending a lot of time working on free, open-source projects on GitHub. Some of the projects I work on were created by me, most by others. Here are some of my highlights."
-            }
-          </Text>
-          <div class="grid md:grid-cols-2 gap-2 mt-4">
-            <ProjectCard
-              org="compiler-explorer"
-              repo="compiler-explorer"
-              icons={['typescript', 'nodejs']}
-              contribution="I've worked across the entire Compiler Explorer stack, but most of my work has been on transitioning from JavaScript to TypeScript. I've also done extensive work on the code formatters and assembly documentation hints in the editor. I'm also responsible for some the Rust tooling on the site."
-              description="Compiler Explorer, or commonly known as godbolt.org, is an interactive website where you can use over 1500 compilers and inspect their assembly outputs in the browser."
-            />
-            <ProjectCard
-              org="matsjla"
-              repo="league-connect"
-              icons={['typescript', 'nodejs']}
-              contribution="I started development on league-connect in 2019. After many iterations and a number of releases following semantic versioning it has become the most popular Node.js library for interacting with the League Client."
-              description="League Connect is my first open-source Node.js library published to NPM that enables desktop applications and tools to access the League of Legends Client APIs. It works over a mix of HTTP/1.1, HTTP/2.0 and WebSockets."
-            />
-            <ProjectCard
-              org="llvm"
-              repo="llvm-project"
-              icons={['c', 'cplusplus', 'cmake']}
-              contribution="My work on LLVM has mostly been within LLVM's C interface, a way to access LLVM APIs from the C programming language. Here I've worked on mapping functions and adding tests related to the LLVM IR and LLVM OrcJITv2 runtime compiler."
-              description="LLVM is a monolithic compiler infrastructure project hosting a number of C and C++ compilers, optimizers, and standard library implementations. It's also the compiler backend for a significant amount of programming languages such as C, C++, Rust, and Swift"
-            />
-            <ProjectCard
-              org="dotkom"
-              repo="monoweb"
-              icons={['typescript', 'react', 'nextjs', 'aws', 'terraform']}
-              contribution="During my time as an Online and Dotkom member I've contributed to numerous parts of our system including our design system, our cloud infrastructure hosted on Amazon Web Services, and most recently; our new events system."
-              description="Monoweb is the new iteration of my study programme's student association's website. It's a large system with many components varying in complexity. Monoweb is implemented as full-stack TypeScript and is the successor to our legacy Python system."
-            />
+      <div class="bg-gray-1">
+        <Section id="projects" color="bg-[url(/wave1.svg)] bg-no-repeat">
+          <div class="p-3">
+            <Title>🔨Open Source</Title>
+            <Text>
+              I'm a firm believer in open-source software, and I consequently find myself spending a lot of time working
+              on free, open-source projects on GitHub. Some of the projects I work on were created by me, most by
+              others. Here are the ones I've poured the most love into.
+            </Text>
+            <div class="grid md:grid-cols-2 gap-2 mt-4">
+              <ProjectCard
+                org="compiler-explorer"
+                repo="compiler-explorer"
+                icons={['typescript', 'nodejs']}
+                contribution="My work on Compiler Explorer ranges from adding tooling to the Rust compilers, keeping Kotlin and Java compilers up to date, leading the initiative on transitioning from JavaScript to TypeScript, and a number of smaller features on the website, such as assembly documentation and code formatting."
+                description="Compiler Explorer, or commonly known as godbolt.org, is an interactive website where you can use over 1500 compilers and inspect their assembly outputs in the browser."
+              />
+              <ProjectCard
+                org="matsjla"
+                repo="league-connect"
+                icons={['typescript', 'nodejs']}
+                contribution="This was my first-ever module published to the NPM registry, having development started in 2019. Many iterations and over 30 releases later it has become the most popular Node.js library for interacting with the League Client APIs."
+                description="League Connect is my first open-source Node.js library published to NPM that enables desktop applications and tools to access the League of Legends Client APIs. It works over a mix of HTTP/1.1, HTTP/2.0 and WebSockets."
+              />
+              <ProjectCard
+                org="llvm"
+                repo="llvm-project"
+                icons={['c', 'cplusplus', 'cmake']}
+                contribution="Most of my contributions to LLVM deal with the LLVM C library interface, an intuitive way of accessing LLVM APIs from the C programming language. Here I've worked on adding more feature coverage, and contributing tests to the LLVM OrcJITv2 runtime compiler"
+                description="LLVM is a monolithic compiler infrastructure project hosting a number of C and C++ compilers, optimizers, and standard library implementations. It's also the compiler backend for a significant amount of programming languages such as C, C++, Rust, and Swift"
+              />
+              <ProjectCard
+                org="dotkom"
+                repo="monoweb"
+                icons={['typescript', 'react', 'nextjs', 'aws', 'terraform']}
+                contribution="During my time in Dotkom, I've contributed to numerous of projects within our large system, including our next-generation application, our design system, and our cloud infrastructure hosted on Amazon Web Services."
+                description="Monoweb is the new iteration of my study programme's student association's website. It's a large and complex system, enabling students to find events and new friends studying informatics. Monoweb is implemented as full-stack TypeScript and is the successor to our legacy Python system."
+              />
+            </div>
           </div>
-        </div>
-      </Section>
-      <Section class="bg-gray-1" id="contact">
+        </Section>
+      </div>
+      <div class="bg-gray-1">
+        <Section id="experience" color="bg-[url(/wave2.svg)] bg-bottom bg-no-repeat">
+          <div class="p-3">
+            <Title>🏠Work Experience</Title>
+            <Text>
+              Throughout the years I've been lucky enough to work for a few companies where I've grown a lot as a
+              developer, as well has having the opportunity to work in teams on larger scale software. This is a
+              timeline highlighting my work and achievements at these companies.
+            </Text>
+            <div class="mt-4"></div>
+            <Timeline events={events} />
+          </div>
+        </Section>
+      </div>
+      <Section id="contact" color="bg-gray-12 dark">
         <div class="p-3">
-          <Title>{'✉️Contact'}</Title>
+          <Title>✉️Contact</Title>
           <Text>
-            {
-              "I'm always interesting in expanding my network and building connections. Have any questions, thoughts, or ideas? Or maybe an opportunity you think I'd be interested in? Please reach me through one of these links, I'm always up for a chat!"
-            }
+            I'm always interested in expanding my network and meeting new people. Have any questions, thoughts, or
+            ideas? Maybe you have a work opportunity where you think I might fit in? Please reach me through one of
+            these links. I'm always up to grab a coffee or a have chat!
           </Text>
 
           <ul class="my-4">
             <li>
               <Text>
                 <Icon name="linkedin" />
-                {'Connect with me on '}
-                <Link href="https://linkedin.com/in/mats-jun-larsen" external={true}>{'LinkedIn'}</Link>
+                Connect with me on&nbsp;
+                <Link href="https://linkedin.com/in/mats-jun-larsen" external={true}>LinkedIn</Link>
               </Text>
             </li>
             <li>
               <Text>
                 <Icon name="github" />
-                {'Follow my activity on '}
-                <Link href="https://github.com/matsjla" external={true}>{'GitHub'}</Link>
+                Follow my activity on&nbsp;
+                <Link href="https://github.com/matsjla" external={true}>GitHub</Link>
               </Text>
             </li>
             <li>
               <Text>
                 <Icon name="gmail" />
-                {'Shoot me an '}
-                <Link href="mailto:me@supergrecko.com" external={true}>{'email'}</Link>
+                Shoot me an&nbsp;
+                <Link href="mailto:me@supergrecko.com" external={true}>email</Link>
               </Text>
             </li>
           </ul>

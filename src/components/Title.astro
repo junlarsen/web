@@ -7,7 +7,7 @@ export interface Props {
 
 const { primary = false } = Astro.props;
 const classes = clsx(
-  'font-bold underline decoration-secondary-10 decoration-4 font-noto tracking-tighter text-primary-12',
+  'font-bold underline decoration-secondary-10 decoration-4 font-noto tracking-tighter text-primary-12 dark:text-primary-dark-12',
   primary ? 'text-4xl' : 'text-3xl',
 );
 ---

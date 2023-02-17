@@ -1,0 +1,40 @@
+---
+import Text from './Text.astro';
+import Icon from './Icon.astro';
+
+export interface Props {
+  start: Date;
+  end: Date;
+  title: string;
+  roles: string[];
+  icons: string[];
+  active?: boolean;
+}
+
+const { company, start, end, title, roles, icons, active = false } = Astro.props;
+const getDateFormatted = (start: Date, end: Date, active: boolean) => {
+  const months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.'];
+  const startYear = start.getFullYear();
+  const startMonth = months[start.getMonth()];
+  const endYear = end.getFullYear();
+  const endMonth = months[end.getMonth()];
+  return startMonth + ' ' + startYear + ' - ' + (active ? 'Present' : endMonth + ' ' + endYear);
+};
+---
+
+<div class="border rounded border-gray-4 shadow p-2">
+  <div class="flex flex-col md:flex-row justify-between">
+    <span class="font-bold">{title}</span>
+    <span class="font-bold">{getDateFormatted(start, end, active)}</span>
+  </div>
+
+  <div class="flex items-start gap-y-1 gap-x-2 flex-row my-2">
+    <div class="flex flex-col gap-2">
+      {roles.map((role) => <Text>{role}</Text>)}
+    </div>
+  </div>
+
+  <div class="flex flex-row gap-1">
+    {icons.map((icon) => <Icon name={icon} />)}
+  </div>
+</div>

@@ -1,0 +1,48 @@
+---
+import Text from './Text.astro';
+import TimelineCell from './TimelineCell.astro';
+
+export interface Props {
+  events: {
+    company: string;
+    logo: string;
+    start: Date;
+    end: Date;
+    title: string;
+    roles: string[];
+    icons: string[];
+    active?: boolean;
+  }[];
+}
+
+const { events } = Astro.props;
+---
+
+<div class="flex flex-col gap-2">
+  {
+    events.map((event) => (
+      <div class="w-full flex flex-col md:flex-row gap-3 md:gap-0 flex-row md:border-l-4 md:border-secondary-10 bg-gray-1">
+        <div class="inline-flex md:w-1/6 px-3 font-bold flex-col justify-center items-center text-center">
+          <div>
+            <img
+              src={new URL(`/icons/${event.logo}.jpeg`, Astro.url)}
+              class="mix-blend-multiply"
+              alt={`${event.company} logo`}
+            />
+          </div>
+          <Text>{event.company}</Text>
+        </div>
+        <div class="w-full md:w-5/6">
+          <TimelineCell
+            start={event.start}
+            end={event.end}
+            title={event.title}
+            roles={event.roles}
+            icons={event.icons}
+            active={event.active}
+          />
+        </div>
+      </div>
+    ))
+  }
+</div>

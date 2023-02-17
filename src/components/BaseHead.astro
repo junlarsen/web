@@ -16,8 +16,23 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" href={new URL('/favicon.ico', Astro.url)} />
 <meta name="generator" content={Astro.generator} />
+<meta name="application-name" content="matsjla.no" />
+<meta name="msapplication-TileColor" content="#da532c" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="white" />
+<link rel="author" href="https://matsjla.no" />
+<link rel="publisher" href="https://matsjla.no" />
+<link rel="apple-touch-icon" sizes="120x120" href={new URL('/apple-touch-icon.png', Astro.url)} />
+<link rel="icon" type="image/png" sizes="32x32" href={new URL('/favicon-32x32.png', Astro.url)} />
+<link rel="icon" type="image/png" sizes="16x16" href={new URL('/favicon-16x16.png', Astro.url)} />
+<link rel="icon" type="image/x-icon" href={new URL('/favicon.ico', Astro.url)} />
+<link rel="manifest" href={new URL('/site.webmanifest', Astro.url)} />
+
+<meta name="twitter:dnt" content="on" />
+<meta name="pinterest" content="nopin" />
+<meta name="format-detection" content="telephone=no" />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
