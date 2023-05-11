@@ -36,7 +36,7 @@ const subjects = await getCollection('subject');
               <Title primary>Pensumoversikt og minikompendier</Title>
               <Text>
                 Dette er en komplett oversikt over notater og minikompendier jeg har satt sammen i forbindelse med eget
-                studie på informatikk.Nedenfor er en liste over emner på NTNU med tilgjengelige notater. Denne listen
+                studie på informatikk. Nedenfor er en liste over emner på NTNU med tilgjengelige notater. Denne listen
                 dekker ikke alle fagene som er i studieløpet, da det er flere fag hvor jeg ikke tok notater, eller ikke
                 ønsker å publisere disse.
               </Text>
@@ -50,7 +50,7 @@ const subjects = await getCollection('subject');
             {
               subjects.map((subject) => (
                 <li>
-                  <Link href={subject.slug}>
+                  <Link href={new URL(subject.slug, Astro.url)}>
                     {subject.data.title} ({subject.data.year})
                   </Link>
                 </li>
