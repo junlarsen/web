@@ -1,0 +1,62 @@
+---
+import { getEntryBySlug } from 'astro:content';
+import Page from '../../components/layouts/Page.astro';
+import Navbar from '../../components/Navbar.astro';
+import Text from '../../components/Text.astro';
+import Link from '../../components/Link.astro';
+import Title from '../../components/Title.astro';
+import NavbarLink from '../../components/NavbarLink.astro';
+import BaseHead from '../../components/BaseHead.astro';
+import Section from '../../components/Section.astro';
+
+const { subject } = Astro.params;
+
+export function getStaticPaths() {
+  return [{ params: { subject: 'tdt4120' } }];
+}
+
+const content = await getEntryBySlug('subject', subject);
+const { Content } = await content.render();
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Crusty Corner | jun.codes"
+      description="This is the Crusty Corner, my personal little piece of the internet <3"
+    />
+  </head>
+  <body>
+    <Page>
+      <Section id="top" color="bg-gray-3">
+        <Navbar>
+          <NavbarLink href="/#projects">Projects</NavbarLink>
+          <NavbarLink href="/#experience">Experience</NavbarLink>
+          <NavbarLink href="/#contact">Contact</NavbarLink>
+        </Navbar>
+
+        <div class="w-full flex flex-col md:flex-row pt-4 gap-8 md:py-16">
+          <div class="flex flex-col justify-between">
+            <div class="flex flex-col gap-2">
+              <Title primary>{content.data.title}</Title>
+              <Link href={content.data.reference}>{content.data.reference}</Link>
+            </div>
+            <Text>Tatt i <span class="font-bold">{content.data.year}</span></Text>
+          </div>
+        </div>
+      </Section>
+      <Section id="content" color="bg-[url(/wave1.svg)] grow bg-no-repeat">
+        <div class="prose w-full">
+          <Content />
+        </div>
+      </Section>
+      <Section id="disclaimer" color="bg-gray-12 dark">
+        <Text>
+          Disclaimer: I do not take any form of responsibility for any damages (bad grades) caused by the material on
+          this site. The content here is for educational purpose only.
+        </Text>
+      </Section>
+    </Page>
+  </body>
+</html>

@@ -16,4 +16,12 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const subject = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    year: z.number(),
+    reference: z.string().url(),
+  }),
+});
+
+export const collections = { blog, subject };

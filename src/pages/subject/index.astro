@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import Page from '../../components/layouts/Page.astro';
+import Navbar from '../../components/Navbar.astro';
+import Text from '../../components/Text.astro';
+
+import Link from '../../components/Link.astro';
+import Title from '../../components/Title.astro';
+import NavbarLink from '../../components/NavbarLink.astro';
+import BaseHead from '../../components/BaseHead.astro';
+import Section from '../../components/Section.astro';
+
+const subjects = await getCollection('subject');
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Crusty Corner | jun.codes"
+      description="This is the Crusty Corner, my personal little piece of the internet <3"
+    />
+  </head>
+  <body>
+    <Page>
+      <Section id="top" color="bg-gray-3">
+        <Navbar>
+          <NavbarLink href="/#projects">Projects</NavbarLink>
+          <NavbarLink href="/#experience">Experience</NavbarLink>
+          <NavbarLink href="/#contact">Contact</NavbarLink>
+        </Navbar>
+
+        <div class="w-full flex flex-col md:flex-row pt-4 gap-8 md:pt-16">
+          <div class="flex flex-col justify-between">
+            <div class="flex flex-col gap-2">
+              <Title primary>Pensumoversikt og minikompendier</Title>
+              <Text>
+                Dette er en komplett oversikt over notater og minikompendier jeg har satt sammen i forbindelse med eget
+                studie på informatikk.Nedenfor er en liste over emner på NTNU med tilgjengelige notater. Denne listen
+                dekker ikke alle fagene som er i studieløpet, da det er flere fag hvor jeg ikke tok notater, eller ikke
+                ønsker å publisere disse.
+              </Text>
+            </div>
+          </div>
+        </div>
+      </Section>
+      <Section id="content" color="bg-[url(/wave1.svg)] bg-no-repeat grow">
+        <div class="prose">
+          <ul>
+            {
+              subjects.map((subject) => (
+                <li>
+                  <Link href={subject.slug}>
+                    {subject.data.title} ({subject.data.year})
+                  </Link>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </Section>
+      <Section id="disclaimer" color="bg-gray-12 dark">
+        <Text>
+          Disclaimer: I do not take any form of responsibility for any damages (bad grades) caused by the material on
+          this site. Please do not share any documents or attachments downloaded from this website without proper
+          attribution. The content here is for educational purpose only.
+        </Text>
+      </Section>
+    </Page>
+  </body>
+</html>

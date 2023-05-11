@@ -9,6 +9,7 @@ function toScaleRecord(color) {
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   darkMode: 'class',
+  plugins: [require('@tailwindcss/typography')],
   theme: {
     extend: {
       fontFamily: {
