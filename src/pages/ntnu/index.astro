@@ -50,7 +50,7 @@ const subjects = await getCollection('subject');
             {
               subjects.map((subject) => (
                 <li>
-                  <Link href={new URL(subject.slug, Astro.url)}>
+                  <Link href={new URL(`/ntnu/${subject.slug}`, Astro.url)}>
                     {subject.data.title} ({subject.data.year})
                   </Link>
                 </li>
